@@ -7,7 +7,7 @@ import {
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { 
   Card, CardContent, CardHeader, CardTitle, 
-  CardDescription, CardFooter 
+  CardDescription
 } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
