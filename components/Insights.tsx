@@ -1,20 +1,33 @@
 "use client";
 import { useState } from "react";
-import { 
-  Send, MessageSquare, Link, ArrowRight, CreditCard, Wallet, 
-  ArrowUpIcon, ArrowDownIcon 
+import {
+  Send,
+  MessageSquare,
+  Link,
+  ArrowRight,
+  CreditCard,
+  Wallet,
+  ArrowUpIcon,
+  ArrowDownIcon,
 } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
-import { 
-  Card, CardContent, CardHeader, CardTitle, 
-  CardDescription
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
 } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
 export default function Insights() {
-  const [activeStatsTab, setActiveStatsTab] = useState<"byAge" | "byGender">("byAge");
-  const [activePaymentTab, setActivePaymentTab] = useState<"reservation" | "food" | "upsell">("reservation");
+  const [activeStatsTab, setActiveStatsTab] = useState<"byAge" | "byGender">(
+    "byAge"
+  );
+  const [activePaymentTab, setActivePaymentTab] = useState<
+    "reservation" | "food" | "upsell"
+  >("reservation");
 
   const monthRange = "March 12, 2025 - April 10, 2025";
 
@@ -102,9 +115,11 @@ export default function Insights() {
             </div>
           </CardHeader>
           <CardContent>
-            <Tabs 
-              value={activeStatsTab} 
-              onValueChange={(v: string) => setActiveStatsTab(v as "byAge" | "byGender")}
+            <Tabs
+              value={activeStatsTab}
+              onValueChange={(v: string) =>
+                setActiveStatsTab(v as "byAge" | "byGender")
+              }
               className="mb-6"
             >
               <TabsList className="grid w-full grid-cols-2">
@@ -166,9 +181,11 @@ export default function Insights() {
             </div>
           </CardHeader>
           <CardContent>
-            <Tabs 
+            <Tabs
               value={activePaymentTab}
-              onValueChange={(v: string) => setActivePaymentTab(v as "reservation" | "food" | "upsell")}
+              onValueChange={(v: string) =>
+                setActivePaymentTab(v as "reservation" | "food" | "upsell")
+              }
               className="mb-6"
             >
               <TabsList className="grid w-full grid-cols-3">
@@ -260,17 +277,35 @@ interface MetricCardProps {
   hoverColor: string;
 }
 
-function MetricCard({ icon, label, value, trend, trendUp, color, hoverColor }: MetricCardProps) {
+function MetricCard({
+  icon,
+  label,
+  value,
+  trend,
+  trendUp,
+  color,
+  hoverColor,
+}: MetricCardProps) {
   return (
-    <Card className={cn("transition-all group hover:scale-[1.02]", color, hoverColor)}>
+    <Card
+      className={cn(
+        "transition-all group hover:scale-[1.02]",
+        color,
+        hoverColor
+      )}
+    >
       <CardContent className="p-2">
         <div className="flex justify-between items-start">
           <div className="bg-background p-2 rounded-lg shadow-sm">{icon}</div>
           {trend && (
-            <span className={cn(
-              "text-xs font-medium px-2 py-1 rounded-full flex items-center",
-              trendUp ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
-            )}>
+            <span
+              className={cn(
+                "text-xs font-medium px-2 py-1 rounded-full flex items-center",
+                trendUp
+                  ? "bg-green-100 text-green-700"
+                  : "bg-red-100 text-red-700"
+              )}
+            >
               {trendUp ? (
                 <ArrowUpIcon className="h-3 w-3 mr-1" />
               ) : (
@@ -297,7 +332,10 @@ interface LegendProps {
 function Legend({ color, label }: LegendProps) {
   return (
     <div className="flex items-center space-x-2">
-      <div className="h-3 w-3 rounded-full" style={{ backgroundColor: color }} />
+      <div
+        className="h-3 w-3 rounded-full"
+        style={{ backgroundColor: color }}
+      />
       <span className="text-xs text-muted-foreground">{label}</span>
     </div>
   );
@@ -320,10 +358,12 @@ function QuickStat({ icon, label, value, change, isPositive }: QuickStatProps) {
           <p className="text-sm text-muted-foreground">{label}</p>
           <div className="flex items-center mt-1">
             <span className="text-lg font-semibold">{value}</span>
-            <span className={cn(
-              "ml-2 text-xs",
-              isPositive ? "text-green-600" : "text-red-600"
-            )}>
+            <span
+              className={cn(
+                "ml-2 text-xs",
+                isPositive ? "text-green-600" : "text-red-600"
+              )}
+            >
               {change}
             </span>
           </div>
